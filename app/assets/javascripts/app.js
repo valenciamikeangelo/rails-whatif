@@ -2,7 +2,8 @@ angular.module('whatifapp',['ui.router',
 'templates',
 'Devise',
 'home',
-'login'])
+'login',
+'signup'])
 
   .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
@@ -21,5 +22,10 @@ angular.module('whatifapp',['ui.router',
 		controller: 'LoginController',
 		controllerAs: 'loginCtrl'
 	})
-
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'signup/_signup.html',
+    controller: 'SignupController',
+    controllerAs: 'signupCtrl'
+  })
   }]);
