@@ -1,2 +1,2 @@
 # rails-whatif
-Whatif APP implementation using Rails 
+Whatif APP implementation using Rails and AngularJS1
