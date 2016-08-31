@@ -1,4 +1,8 @@
-angular.module('whatifapp',['ui.router','templates','home'])
+angular.module('whatifapp',['ui.router',
+'templates',
+'Devise',
+'home',
+'login'])
 
   .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
@@ -10,6 +14,12 @@ angular.module('whatifapp',['ui.router','templates','home'])
 		templateUrl: 'home/_home.html',
 		controller: 'HomeController',
 		controllerAs: 'homeCtrl'
+	})
+  .state('login', {
+		url: '/login',
+		templateUrl: 'login/_login.html',
+		controller: 'LoginController',
+		controllerAs: 'loginCtrl'
 	})
 
   }]);
