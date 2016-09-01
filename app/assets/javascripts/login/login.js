@@ -2,7 +2,7 @@
 
   angular.module('login',['Devise'])
 
-  .controller('LoginController',['Auth','$state',function(Auth,$state){
+  .controller('LoginController',['Auth','$state','$scope',function(Auth,$state,$scope){
       var self =this;
 
       self.login = function() {
