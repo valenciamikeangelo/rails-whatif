@@ -1,15 +1,26 @@
 (function(){
 
-  angular.module('home',[])
-  .controller('HomeController',[ function(){
-      var self=this;
-      var posts;
-      self.posts=[
-      {title: 'post 1', upvotes: 5},
-      {title: 'post 2', upvotes: 2},
-      {title: 'post 3', upvotes: 15},
-      {title: 'post 4', upvotes: 9},
-      {title: 'post 5', upvotes: 4}
-    ];
+  angular.module('home',['ui.router','feeds'])
+  .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+    $stateProvider
+    .state('home.feeds', {
+  		url: '/feeds',
+  		templateUrl: 'home/feeds/_feeds.html',
+  		controller: 'FeedsController',
+  		controllerAs: 'feedsCtrl'
+  	})
   }])
+  .controller('HomeController',['PostService', function(PostService){
+      var self=this;
+
+      self.submitPost=function(){
+
+      }
+
+  }])
+  .service('PostService',[function(){
+
+  }]);
+
 })();
