@@ -11,10 +11,11 @@
                 email:self.email,
                 password:self.password
               };
-
+              //csrfToken = $('meta[name=csrf-token]').attr('content')
               var config = {
                 headers: {
-
+                  'X-HTTP-Method-Override': 'POST'
+                //  'X-CSRF-Token':csrfToken
                 }
             };
 

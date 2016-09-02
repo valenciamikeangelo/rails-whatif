@@ -14,11 +14,11 @@
               password_confirmation: self.confpass
           };
             console.log('User :' + credentials);
-             csrfToken = $('meta[name=csrf-token]').attr('content')
+             //csrfToken = $('meta[name=csrf-token]').attr('content')
           var config = {
               headers: {
-                  'X-HTTP-Method-Override': 'POST',
-                  'X-CSRF-Token':csrfToken
+                  'X-HTTP-Method-Override': 'POST'
+              //    'X-CSRF-Token':csrfToken
               }
           };
 

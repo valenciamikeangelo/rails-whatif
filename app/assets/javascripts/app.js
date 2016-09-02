@@ -5,7 +5,17 @@ angular.module('whatifapp',['ui.router',
 'login',
 'signup'])
 
-  .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+  .factory('ReqInterceptor',[function(){
+    return{
+      request:function(config){
+        csrfToken = $('meta[name=csrf-token]').attr('content')
+        config.headers['X-CSRF-Token'] = csrfToken
+        return config;
+      }
+    }
+  }])
+  .config(['$stateProvider','$urlRouterProvider','$httpProvider',function($stateProvider,$urlRouterProvider,$httpProvider){
+      $httpProvider.interceptors.push('ReqInterceptor');
 
       $urlRouterProvider.otherwise('/home');
 

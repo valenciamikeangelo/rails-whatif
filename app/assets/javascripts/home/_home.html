@@ -21,12 +21,14 @@
 			<h4 class="modal-title">Create New Message</h4>
 		</div>
 		<div class="modal-body">
-			<textarea class="form-control" rows="3"></textarea>
+			<label for="inputTitle" class="sr-only">Title</label>
+			<input type="text" id="inputTitle" class="form-control" placeholder="Title"  required autofocus ng-model="homeCtrl.title">
+			<textarea class="form-control" rows="3" ng-model="homeCtrl.content"></textarea>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Photo</button>
 			<button type="button" class="btn btn-default" data-dismiss="modal">Video</button>
-			<button type="button" class="btn btn-default" data-dismiss="modal">Post</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="homeCtrl.submitPost()">Post</button>
 		</div>
 	</div>
 
