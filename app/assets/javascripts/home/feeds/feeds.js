@@ -1,14 +1,33 @@
 (function(){
-    angular.module('feeds',[])
-    .controller('FeedsController',[function(){
+    angular.module('feeds',['appconfig'])
+    .service('FeedService',['configuration','$http',function(configuration,$http){
+
+       function doGetAll(){
+         var response=$http.get(configuration.backend + '/posts.json');
+         return response;
+       }
+
+      return{
+        getAll:function(){
+          return doGetAll();
+        }
+      }
+    }])
+    .controller('FeedsController',['FeedService',function(FeedService){
       var self=this;
       var posts;
-      self.posts=[
-          {title: 'post 1', upvotes: 5},
-          {title: 'post 2', upvotes: 2},
-          {title: 'post 3', upvotes: 15},
-          {title: 'post 4', upvotes: 9},
-          {title: 'post 5', upvotes: 4}
-        ];
+
+      FeedService.getAll().then(handleSuccess,handleError);
+
+      function handleSuccess(response){
+        var data=response.data;
+        console.log('Posts:' +data)
+        self.posts=data;
+      }
+      function handleError(response){
+
+      }
+
+
     }]);
 })();
